@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using NpTest.Data;
+using NpTest.Services;
+using NpTest.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<BiddingContext>(options =>
         options.UseSqlite(builder.Configuration.GetConnectionString("BiddingContext")));
+
+builder.Services.AddScoped<IBiddingService, BiddingService>();
 
 builder.Services.AddControllersWithViews();
 

@@ -1,21 +1,20 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using NpTest.Models;
+using NpTest.Services.Interfaces;
 
 namespace NpTest.Controllers;
 
-public class HomeController : Controller
+public class HomeController(ILogger<HomeController> logger, IBiddingService biddingService) : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger<HomeController> _logger = logger;
+    private readonly IBiddingService _biddingService = biddingService;
 
-    public HomeController(ILogger<HomeController> logger)
+    public async Task<IActionResult> Index()
     {
-        _logger = logger;
-    }
+        var biddings = await _biddingService.GetBiddingsAsync();
 
-    public IActionResult Index()
-    {
-        return View();
+        return View(biddings);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
