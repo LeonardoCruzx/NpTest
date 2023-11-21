@@ -1,6 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using NpTest.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddDbContext<BiddingContext>(options =>
+        options.UseSqlite(builder.Configuration.GetConnectionString("BiddingContext")));
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
