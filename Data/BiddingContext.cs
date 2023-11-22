@@ -10,6 +10,7 @@ public class BiddingContext : DbContext
     }
 
     public DbSet<Bidding> Biddings { get; set; } = default!;
+    public DbSet<User> Users { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -80,9 +81,9 @@ public class BiddingContext : DbContext
             {
                 Id = 1,
                 UserName = "admin",
-                Password = "admin",
-                CreatedAt = DateTime.Now,
-                UpdatedAt = DateTime.Now
+                Password = BCrypt.Net.BCrypt.HashPassword("admin"),
+                CreatedAt = new DateTime(2021, 1, 1),
+                UpdatedAt = new DateTime(2022, 1, 1)
             }
         );
     }
