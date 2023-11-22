@@ -1,5 +1,17 @@
-﻿@{
+﻿@model IEnumerable<NpTest.Models.Bidding>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <p>Home</p>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-auto"> 
+            <p>@item.Id</p>
+            <p>@item.Description</p>
+        </div>
+    }
+</div>
