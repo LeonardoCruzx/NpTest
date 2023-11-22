@@ -1,5 +1,13 @@
+@model NpTest.ViewModels.LoginViewModel
+
 @{
     ViewData["Title"] = "Login";
 }
 
 <p>Login</p>
+
+<form asp-controller="Account" asp-action="Login" method="post">
+    <input type="text" asp-for="UserName" placeholder="username" />
+    <input type="password" asp-for="Password" placeholder="password" />
+    <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
