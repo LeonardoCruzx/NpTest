@@ -16,7 +16,8 @@ public class BiddingContext : DbContext
         ConfigureBidding(modelBuilder);
         SeedBiddings(modelBuilder);
 
-
+        ConfigureUser(modelBuilder);
+        SeedUsers(modelBuilder);
     }
 
     private void ConfigureBidding(ModelBuilder modelBuilder)
@@ -57,6 +58,31 @@ public class BiddingContext : DbContext
                 Description = "Third bidding",
                 OpenDate = DateTime.Now,
                 Status = BiddingStatus.Open
+            }
+        );
+    }
+
+    private void ConfigureUser(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<User>().ToTable("User");
+        modelBuilder.Entity<User>().HasKey(u => u.Id);
+        modelBuilder.Entity<User>().Property(u => u.Id).IsRequired().ValueGeneratedOnAdd();
+        modelBuilder.Entity<User>().Property(u => u.UserName).IsRequired();
+        modelBuilder.Entity<User>().Property(u => u.Password).IsRequired();
+        modelBuilder.Entity<User>().Property(u => u.CreatedAt).IsRequired();
+        modelBuilder.Entity<User>().Property(u => u.UpdatedAt).IsRequired();
+    }
+
+    private void SeedUsers(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<User>().HasData(
+            new User
+            {
+                Id = 1,
+                UserName = "admin",
+                Password = "admin",
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now
             }
         );
     }
