@@ -8,18 +8,25 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/NpTest.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    
+
 </head>
 
 <body>
 
-    <partial name="_LoggedNavBarPartial" />
-    
+    @if (User.Identity?.IsAuthenticated ?? false)
+    {
+        <partial name="_LoggedNavBarPartial" />
+    }
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+
+    <footer class="bg-light text-dark text-center py-3">
+        <p>Designed by Leo</p>
+    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
