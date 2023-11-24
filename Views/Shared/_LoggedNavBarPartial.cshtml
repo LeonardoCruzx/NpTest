@@ -1,0 +1,17 @@
+<nav class="d-flex flex-row shadow shadow-md justify-content-between mb-5 p-1">
+
+    <div class="left d-flex mx-4 mt-2 container-esp">
+        <a class="mx-3" asp-action="Index" asp-controller="Home">
+            <h4 class="nav-button">Bidding</h3>
+        </a>
+        <a class="mx-2 mt-1" asp-action="Index" asp-controller="Home">
+            <p class="nav-button">Inicio</p>
+        </a>
+    </div>
+
+    <div class="right d-flex mx-4 mt-2">
+        <form asp-action="Logout" asp-controller="Account">
+            <button type="submit" class="nav-button mx-2 mt-1">Deslogar</button>
+        </form>
+    </div>
+</nav>
