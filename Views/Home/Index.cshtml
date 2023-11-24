@@ -4,14 +4,15 @@
     ViewData["Title"] = "Home Page";
 }
 
-<p>Home</p>
+<div class="row">
+    <a class="col-1 my-2 mx-5 d-flex justify-content-center bg-white shadow shadow-md " asp-action="Create" asp-controller="Bidding">
+        <p class="my-2">Create</p>
+    </a>
+</div>
 
-<p>Username: @User.Identity?.Name</p>
-
-
-<div class="container p-3 shadow shadow-lg bg-light rounded rounded-lg">
+<div class="container p-3 shadow shadow-lg bg-white rounded rounded-lg">
     <h3>Biddings</h3>
-    <table class="table table-hover bg-white shadow shadow-lg ">
+    <table class="table table-hover bg-light shadow shadow-lg ">
         <thead>
             <tr>
                 <th>@Html.DisplayNameFor(model => model.Id)</th>
@@ -34,7 +35,7 @@
                         </a>
                     </td>
                     <td>
-                        <a class="d-flex justify-content-center" asp-action="Edit" asp-controller="Bidding" asp-route-id="@item.Id">
+                        <a class="d-flex justify-content-center" asp-action="Remove" asp-controller="Bidding" asp-route-id="@item.Id">
                             <p class="exclude-button">Remove</p>
                         </a>
                     </td>
