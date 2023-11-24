@@ -81,7 +81,7 @@ public class BiddingContext : DbContext
             {
                 Id = 1,
                 UserName = "admin",
-                Password = BCrypt.Net.BCrypt.HashPassword("admin"),
+                Password = BCrypt.Net.BCrypt.HashPassword("admin", 4),
                 CreatedAt = new DateTime(2021, 1, 1),
                 UpdatedAt = new DateTime(2022, 1, 1)
             }

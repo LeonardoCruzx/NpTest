@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NpTest.Data;
 
@@ -10,9 +11,11 @@ using NpTest.Data;
 namespace NpTest.Migrations
 {
     [DbContext(typeof(BiddingContext))]
-    partial class BiddingContextModelSnapshot : ModelSnapshot
+    [Migration("20231124004441_AdminPasswordHash")]
+    partial class AdminPasswordHash
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0");

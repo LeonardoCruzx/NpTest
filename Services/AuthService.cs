@@ -34,7 +34,7 @@ public class AuthService(
                 return false;
             }
 
-            if (BCrypt.Net.BCrypt.Verify(model.Password, user.Password))
+            if (!BCrypt.Net.BCrypt.Verify(model.Password, user.Password))
             {
                 return false;
             }
