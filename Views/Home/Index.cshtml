@@ -8,12 +8,38 @@
 
 <p>Username: @User.Identity?.Name</p>
 
-<div class="row">
-    @foreach (var item in Model)
-    {
-        <div class="col-auto"> 
-            <p>@item.Id</p>
-            <p>@item.Description</p>
-        </div>
-    }
+
+<div class="container p-3 shadow shadow-lg bg-light rounded rounded-lg">
+    <h3>Biddings</h3>
+    <table class="table table-hover bg-white shadow shadow-lg ">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Id)</th>
+                <th>@Html.DisplayNameFor(model => model.Description)</th>
+                <th>@Html.DisplayNameFor(model => model.Number)</th>
+                <th>Edit</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="hover-shadow">
+                    <td >@item.Id</td>
+                    <td>@item.Description</td>
+                    <td>@item.Number</td>
+                    <td>
+                        <a class="d-flex justify-content-center" asp-action="Edit" asp-controller="Bidding" asp-route-id="@item.Id">
+                            <p class="edit-button">Edit</p>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="d-flex justify-content-center" asp-action="Edit" asp-controller="Bidding" asp-route-id="@item.Id">
+                            <p class="exclude-button">Remove</p>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
