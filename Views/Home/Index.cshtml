@@ -1,4 +1,4 @@
-﻿@model IEnumerable<NpTest.Models.Bidding>
+﻿@model NpTest.ViewModels.HomeViewModel
 
 @{
     ViewData["Title"] = "Home Page";
@@ -12,20 +12,48 @@
 
 <div class="container p-3 shadow shadow-lg bg-white rounded rounded-lg">
     <h3>Biddings</h3>
+    <div class="mx-5 shadow shadow-lg">
+        <form class="form-inline d-flex p-3" asp-controller="Home" asp-action="Index">
+            <div class="form-group">
+                <label class="" for="orderBy">OrderBy</label>
+                <select class="" asp-for="OrderBy" asp-items="ViewBag.Fields"></select>
+            </div>
+
+            <div class="form-group mx-2">
+                <label class="" for="orderBy">Order</label>
+                <select class="" asp-for="OrderByType">
+                    <option value="asc">Asc</option>
+                    <option value="desc">Desc</option>
+                </select>
+            </div>
+
+            <div class="form-group mx-2">
+                <label class="" for="orderBy">FilterBy</label>
+                <select class="" asp-for="FilterBy" asp-items="ViewBag.Fields"></select>
+            </div>
+
+            <div class="form-group mx-2">
+                <label class="" for="orderBy">Filter</label>
+                <input class="" asp-for="FilterByValue" />
+            </div>
+
+            <button type="submit" class="btn-small btn-primary">Apply</button>
+        </form>
+    </div>
     <table class="table table-hover bg-light shadow shadow-lg ">
         <thead>
             <tr>
-                <th>@Html.DisplayNameFor(model => model.Id)</th>
-                <th>@Html.DisplayNameFor(model => model.Description)</th>
-                <th>@Html.DisplayNameFor(model => model.Number)</th>
-                <th>@Html.DisplayNameFor(model => model.Status)</th>
-                <th>@Html.DisplayNameFor(model => model.OpenDate)</th>
+                <th>@Html.DisplayNameForInnerType((Bidding bidding) => bidding.Id)</th>
+                <th>@Html.DisplayNameForInnerType((Bidding bidding) => bidding.Description)</th>
+                <th>@Html.DisplayNameForInnerType((Bidding bidding) => bidding.Number)</th>
+                <th>@Html.DisplayNameForInnerType((Bidding bidding) => bidding.Status)</th>
+                <th>@Html.DisplayNameForInnerType((Bidding bidding) => bidding.OpenDate)</th>
                 <th>Edit</th>
                 <th>Remove</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @foreach (var item in Model.Biddings)
             {
                 <tr class="hover-shadow">
                     <td>@item.Id</td>
