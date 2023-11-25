@@ -9,6 +9,7 @@ public class Bidding
     public int Number { get; set; }
     [Required]
     public string? Description { get; set; }
+    [DataType(DataType.Date)]
     public DateTime OpenDate { get; set; }
     [Required]
     public BiddingStatus Status { get; set; }

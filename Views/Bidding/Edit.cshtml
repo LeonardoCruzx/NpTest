@@ -23,6 +23,9 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
                 <textarea class="col-12 py-2 my-2" type="text" cols="40" rows="5" asp-for="Description" placeholder="description" />@Model?.Description</textarea>
 
+                <span asp-validation-for="OpenDate" class="text-danger"></span>
+                <input class="col-12 py-2 my-2" type="datetime-local" asp-for="OpenDate" placeholder="open date" />
+                
                 <select class="col-12 py-2 my-2" asp-for="Status" asp-items="ViewBag.Statuses"></select>
                 <button type="submit" class="btn btn-primary col-12">Save</button>
             </form>

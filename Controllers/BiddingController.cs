@@ -17,7 +17,7 @@ public class BiddingController(ILogger<BiddingController> logger, BiddingContext
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Number, Description, Status")] Bidding model)
+    public async Task<IActionResult> Create([Bind("Number, Description, OpenDate, Status")] Bidding model)
     {
         ViewBag.Statuses = new SelectList(Enum.GetValues(typeof(BiddingStatus)));
 
@@ -71,7 +71,7 @@ public class BiddingController(ILogger<BiddingController> logger, BiddingContext
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id, Number, Description, Status")] Bidding model)
+    public async Task<IActionResult> Edit(int id, [Bind("Id, Number, Description, OpenDate, Status")] Bidding model)
     {
         ViewBag.Statuses = new SelectList(Enum.GetValues(typeof(BiddingStatus)));
 

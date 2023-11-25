@@ -19,6 +19,7 @@
                 <th>@Html.DisplayNameFor(model => model.Description)</th>
                 <th>@Html.DisplayNameFor(model => model.Number)</th>
                 <th>@Html.DisplayNameFor(model => model.Status)</th>
+                <th>@Html.DisplayNameFor(model => model.OpenDate)</th>
                 <th>Edit</th>
                 <th>Remove</th>
             </tr>
@@ -27,10 +28,11 @@
             @foreach (var item in Model)
             {
                 <tr class="hover-shadow">
-                    <td >@item.Id</td>
+                    <td>@item.Id</td>
                     <td>@item.Description</td>
                     <td>@item.Number</td>
                     <td>@item.Status</td>
+                    <td>@item.OpenDate</td>
                     <td>
                         <a class="d-flex justify-content-center" asp-action="Edit" asp-controller="Bidding" asp-route-id="@item.Id">
                             <p class="edit-button">Edit</p>
