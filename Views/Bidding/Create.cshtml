@@ -1,4 +1,33 @@
+@model NpTest.Models.Bidding
 
-<p>
-    Create
-</p>
+
+<div class="container">
+    <div class="row my-5 text-center">
+        <h2>Create new bidding!</h2>
+    </div>
+    @if (ViewBag.SuccessMessage != null)
+    {
+        <div class="alert alert-success text-center" role="alert">
+           @ViewBag.SuccessMessage
+        </div>
+    }
+    <div class="row mt-5">
+        
+        <div class="col-4"></div>
+
+        <div class="col-4 p-4 shadow shadow-md">
+            <form class="row p-2" asp-controller="Bidding" asp-action="Create" method="post">
+                <span asp-validation-for="Number" class="text-danger"></span>
+                <input class="col-12 py-2 my-2" type="text" asp-for="Number" placeholder="number" />
+
+                <span asp-validation-for="Description" class="text-danger"></span>
+                <textarea class="col-12 py-2 my-2" type="text" cols="40" rows="5" asp-for="Description" placeholder="description" />@Model?.Description</textarea>
+
+                <select class="col-12 py-2 my-2" asp-for="Status" asp-items="ViewBag.Statuses"></select>
+                <button type="submit" class="btn btn-primary col-12">Create</button>
+            </form>
+        </div>
+
+        <div class="col-4"></div>
+    </div>
+</div>
