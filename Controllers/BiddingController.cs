@@ -35,6 +35,25 @@ public class BiddingController(ILogger<BiddingController> logger, BiddingContext
         return View();
     }
 
+    public async Task<IActionResult> Delete(int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+
+        var bidding = await _context.Biddings.FindAsync(id);
+        if (bidding == null)
+        {
+            return NotFound();
+        }
+
+        _context.Biddings.Remove(bidding);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction("Index", "Home");
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
