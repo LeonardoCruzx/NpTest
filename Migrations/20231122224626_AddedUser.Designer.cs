@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NpTest.Data;
 
@@ -10,9 +11,11 @@ using NpTest.Data;
 namespace NpTest.Migrations
 {
     [DbContext(typeof(BiddingContext))]
-    partial class BiddingContextModelSnapshot : ModelSnapshot
+    [Migration("20231122224626_AddedUser")]
+    partial class AddedUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
@@ -45,7 +48,7 @@ namespace NpTest.Migrations
                             Id = 1,
                             Description = "First bidding",
                             Number = 1,
-                            OpenDate = new DateTime(2023, 11, 23, 21, 44, 41, 361, DateTimeKind.Local).AddTicks(5472),
+                            OpenDate = new DateTime(2023, 11, 22, 19, 46, 26, 21, DateTimeKind.Local).AddTicks(8150),
                             Status = 0
                         },
                         new
@@ -53,7 +56,7 @@ namespace NpTest.Migrations
                             Id = 2,
                             Description = "Second bidding",
                             Number = 2,
-                            OpenDate = new DateTime(2023, 11, 23, 21, 44, 41, 361, DateTimeKind.Local).AddTicks(5483),
+                            OpenDate = new DateTime(2023, 11, 22, 19, 46, 26, 21, DateTimeKind.Local).AddTicks(8160),
                             Status = 0
                         },
                         new
@@ -61,7 +64,7 @@ namespace NpTest.Migrations
                             Id = 3,
                             Description = "Third bidding",
                             Number = 3,
-                            OpenDate = new DateTime(2023, 11, 23, 21, 44, 41, 361, DateTimeKind.Local).AddTicks(5484),
+                            OpenDate = new DateTime(2023, 11, 22, 19, 46, 26, 21, DateTimeKind.Local).AddTicks(8161),
                             Status = 0
                         });
                 });
@@ -94,9 +97,9 @@ namespace NpTest.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Password = "$2a$04$zF53nha18AKyqWRwVlk87ueW2m0w2w81WGOhzWw.aVrqUvcBXOwEu",
-                            UpdatedAt = new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 22, 19, 46, 26, 22, DateTimeKind.Local).AddTicks(7286),
+                            Password = "admin",
+                            UpdatedAt = new DateTime(2023, 11, 22, 19, 46, 26, 22, DateTimeKind.Local).AddTicks(7289),
                             UserName = "admin"
                         });
                 });

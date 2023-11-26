@@ -10,13 +10,15 @@ public class BiddingContext : DbContext
     }
 
     public DbSet<Bidding> Biddings { get; set; } = default!;
+    public DbSet<User> Users { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         ConfigureBidding(modelBuilder);
         SeedBiddings(modelBuilder);
 
-
+        ConfigureUser(modelBuilder);
+        SeedUsers(modelBuilder);
     }
 
     private void ConfigureBidding(ModelBuilder modelBuilder)
@@ -57,6 +59,31 @@ public class BiddingContext : DbContext
                 Description = "Third bidding",
                 OpenDate = DateTime.Now,
                 Status = BiddingStatus.Open
+            }
+        );
+    }
+
+    private void ConfigureUser(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<User>().ToTable("User");
+        modelBuilder.Entity<User>().HasKey(u => u.Id);
+        modelBuilder.Entity<User>().Property(u => u.Id).IsRequired().ValueGeneratedOnAdd();
+        modelBuilder.Entity<User>().Property(u => u.UserName).IsRequired();
+        modelBuilder.Entity<User>().Property(u => u.Password).IsRequired();
+        modelBuilder.Entity<User>().Property(u => u.CreatedAt).IsRequired();
+        modelBuilder.Entity<User>().Property(u => u.UpdatedAt).IsRequired();
+    }
+
+    private void SeedUsers(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<User>().HasData(
+            new User
+            {
+                Id = 1,
+                UserName = "admin",
+                Password = BCrypt.Net.BCrypt.HashPassword("admin", 4),
+                CreatedAt = new DateTime(2021, 1, 1),
+                UpdatedAt = new DateTime(2022, 1, 1)
             }
         );
     }

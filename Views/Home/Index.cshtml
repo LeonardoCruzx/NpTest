@@ -1,17 +1,78 @@
-﻿@model IEnumerable<NpTest.Models.Bidding>
+﻿@model NpTest.ViewModels.HomeViewModel
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<p>Home</p>
-
 <div class="row">
-    @foreach (var item in Model)
-    {
-        <div class="col-auto"> 
-            <p>@item.Id</p>
-            <p>@item.Description</p>
-        </div>
-    }
+    <a class="col-auto mb-3 mx-5 d-flex justify-content-center bg-white shadow shadow-md " asp-action="Create" asp-controller="Bidding">
+        <p class="my-2">Create new bidding</p>
+    </a>
+</div>
+
+<div class="container p-3 shadow shadow-lg bg-white rounded rounded-lg">
+    <h3>Biddings</h3>
+    <div class="mx-5 shadow shadow-lg">
+        <form class="form-inline d-flex p-3" asp-controller="Home" asp-action="Index">
+            <div class="form-group">
+                <label class="" for="orderBy">OrderBy</label>
+                <select class="" asp-for="OrderBy" asp-items="ViewBag.Fields"></select>
+            </div>
+
+            <div class="form-group mx-2">
+                <label class="" for="orderBy">Order</label>
+                <select class="" asp-for="OrderByType">
+                    <option value="asc">Asc</option>
+                    <option value="desc">Desc</option>
+                </select>
+            </div>
+
+            <div class="form-group mx-2">
+                <label class="" for="orderBy">FilterBy</label>
+                <select class="" asp-for="FilterBy" asp-items="ViewBag.Fields"></select>
+            </div>
+
+            <div class="form-group mx-2">
+                <label class="" for="orderBy">Filter</label>
+                <input class="" asp-for="FilterByValue" />
+            </div>
+
+            <button type="submit" class="btn-small btn-primary">Apply</button>
+        </form>
+    </div>
+    <table class="table table-hover bg-light shadow shadow-lg ">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameForInnerType((Bidding bidding) => bidding.Id)</th>
+                <th>@Html.DisplayNameForInnerType((Bidding bidding) => bidding.Description)</th>
+                <th>@Html.DisplayNameForInnerType((Bidding bidding) => bidding.Number)</th>
+                <th>@Html.DisplayNameForInnerType((Bidding bidding) => bidding.Status)</th>
+                <th>@Html.DisplayNameForInnerType((Bidding bidding) => bidding.OpenDate)</th>
+                <th>Edit</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Biddings)
+            {
+                <tr class="hover-shadow">
+                    <td>@item.Id</td>
+                    <td>@item.Description</td>
+                    <td>@item.Number</td>
+                    <td>@item.Status</td>
+                    <td>@item.OpenDate</td>
+                    <td>
+                        <a class="d-flex justify-content-center" asp-action="Edit" asp-controller="Bidding" asp-route-id="@item.Id">
+                            <p class="edit-button">Edit</p>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="d-flex justify-content-center" asp-action="Delete" asp-controller="Bidding" asp-route-id="@item.Id">
+                            <p class="exclude-button">Delete</p>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
